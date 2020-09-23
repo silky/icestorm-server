@@ -12,7 +12,8 @@ all:
 	touch "$(BUILD_DIR)/pinmap.pcf"
 	nextpnr-ice40 --up5k --package $(FOOTPRINT)\
 		--asc "$(BUILD_DIR)/out.asc" --pcf "$(BUILD_DIR)/pinmap.pcf"\
-		--json "$(BUILD_DIR)/out.json"
+		--json "$(BUILD_DIR)/out.json"\
+		--pcf-allow-unconstrained
 
 	# Convert to bitstream using IcePack
 	icepack "$(BUILD_DIR)/out.asc" "$(BUILD_DIR)/out.bin"
